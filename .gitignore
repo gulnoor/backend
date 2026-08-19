@@ -20,7 +20,6 @@ yarn.lock
 .DS_Store
 
 # Build output
-dist/
 build/
 
 # Logs

@@ -9,10 +9,8 @@
   "scripts": {
     "dev": "node --watch index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "clean:server": "rimraf dist/backend",
-    "clean:ui": "rimraf dist/public",
-    "build:backend": "npm run clean:server && tsc",
-    "build:ui": "npm run clean:ui && cd ../frontend && npm run build && shx cp -r dist ../backend/dist/public",
+    "build:backend": "rimraf dist/backend && tsc",
+    "build:ui": "rimraf dist/public && cd ../frontend && npm run build && shx cp -r dist ../backend/dist/public",
     "build:full": "npm run build:backend && npm run build:ui",
     "start": "node dist/backend/index.js",
     "deploy:full": "npm run build:full && git add . && git commit -m uibuild && git push"
