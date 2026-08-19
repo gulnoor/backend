@@ -1,0 +1,101 @@
+Table customer {
+  id int [pk, increment]
+  createdAt timestamptz
+  firstName varchar(20)
+  lastName varchar(20)
+  email varchar(50)
+  password varchar(50)
+  addresses int
+  phoneNumber varchar(15)
+  // orderHistory int
+}
+Table address{
+  id int [pk, increment]
+  addressLine varchar(250)
+  city varchar(50)
+  postalCode varchar(20)
+  longitude decimal(9,6)
+  latitude decimal(9,6)
+  isDefault bool
+}
+
+Enum orderType {
+  "dine-in"
+  "takeaway"
+  "delivery"
+}
+Table order{
+  orderNumber int [pk, increment]
+  tableId smallint
+  // orderType orderType 
+  orderType varchar [check:`Check() orderType IN ('dine-in','takeaway','delivery')`]
+  status varchar [default: 'pending', check: `CHECK (status IN ('pending', 'processing', 'shipped', 'delivered', 'cancelled'))`]
+  orderedAtTime timestamptz
+  deliveredAtTime timestamptz
+  address int
+  orderReview int
+  orderItems int []
+  // specify precision and scale
+  deliveryFee decimal
+  discount decimal
+  tax decimal
+  riderTip decimal
+  total decimal
+
+}
+Table orderReview {
+  id int [pk, increment]
+  reviewText text
+  rating smallint [check: `rating BETWEEN 1 AND 5`]
+}
+
+Table orderItem{
+  id int [pk, increment]
+  menuItem int
+  quantity smallint
+
+}
+Table menuItem{
+  id char(12) [pk]
+  name char(50)
+  description text
+  category varchar(30)
+  price decimal
+  imageUrl varchar(1000)
+  // customization
+  preparationDuration  int
+   isAvailable bool
+     taxRate decimal(5,3)
+}
+Enum employeeType {
+  "manager"
+  "deliveryDriver"
+  "waiter"
+  "chef"
+}
+Table employee {
+  id int [pk, increment]
+  joinedAt timestamptz
+  firstName varchar(20)
+  lastName varchar(20)
+  type employeeType
+  salary decimal
+}
+
+Table paymentMethod {
+  id int [pk, increment]
+  nameOnCard varchar(30) 
+  cardNumber char(16)
+  expiryDate char(4)
+  billingAddress varchar(250)
+}
+
+//customer may not be registered
+Table reservation {
+  id int [pk, increment]
+  name varchar(50)
+  reservationTime timestamptz
+  persons smallint [note:"unsigned"]
+  status varchar [check:`status IN ('pending','approved','canceled','expired')`]
+}
+

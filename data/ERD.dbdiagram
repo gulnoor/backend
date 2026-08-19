@@ -1,0 +1,86 @@
+{
+  "version": "3.0.0",
+  "darkMode": true,
+  "gridEnabling": false,
+  "currentViewName": null,
+  "defaultView": {
+    "detailLevel": "All",
+    "relationshipMode": "All",
+    "tablePositions": [
+      {
+        "name": "customer",
+        "schemaName": "public",
+        "x": -10.467803979427131,
+        "y": -11.501033207536441
+      },
+      {
+        "name": "address",
+        "schemaName": "public",
+        "x": 296,
+        "y": 0
+      },
+      {
+        "name": "order",
+        "schemaName": "public",
+        "x": 576,
+        "y": 0
+      },
+      {
+        "name": "orderReview",
+        "schemaName": "public",
+        "x": 872,
+        "y": 0
+      },
+      {
+        "name": "orderItem",
+        "schemaName": "public",
+        "x": 0,
+        "y": 304
+      },
+      {
+        "name": "menuItem",
+        "schemaName": "public",
+        "x": 296,
+        "y": 304
+      },
+      {
+        "name": "employee",
+        "schemaName": "public",
+        "x": 576,
+        "y": 528
+      },
+      {
+        "name": "paymentMethod",
+        "schemaName": "public",
+        "x": 872,
+        "y": 176
+      },
+      {
+        "name": "reservation",
+        "schemaName": "public",
+        "x": 0,
+        "y": 488
+      }
+    ],
+    "tableGroupCollapseStates": [],
+    "stickyNoteLayouts": [],
+    "referencePaths": [
+      {
+        "firstFieldNames": [
+          "addresses"
+        ],
+        "firstTableName": "customer",
+        "firstSchemaName": "public",
+        "firstRelation": "0..*",
+        "secondFieldNames": [
+          "id"
+        ],
+        "secondTableName": "address",
+        "secondSchemaName": "public",
+        "secondRelation": "0..1",
+        "checkPoints": []
+      }
+    ]
+  },
+  "views": {}
+}
